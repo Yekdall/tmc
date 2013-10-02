@@ -1,0 +1,33 @@
+<% provide(:title, @restaurant.name) %>
+
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= @restaurant.name %><br/>
+				
+				<%= image_tag @restaurant.avatar.url(:thumb) %><br/>
+			</h1>
+			<h3>Tipo de restaurante: <%= @restaurant.restaurant_type.name %></h3>
+		</section>
+	</aside>
+	<div class="span8">
+		
+		<div id="inmo-details" class="row-fluid">
+			<span class="span6">
+				<h2 class="contacto">Dirección</h2>
+				<%= @restaurant.address %><br/>
+				<%= @restaurant.postcode %>, <%= @restaurant.city %><br/>
+				<%= @selected_region.name %><br/>
+				<%= @restaurant.pais %>
+			</span>
+			<span class="span6">
+				<h2 class="contacto">Datos de contacto</h2>
+				<strong>Teléfono:</strong> <%= @restaurant.phone %><br/>
+				<strong>Fax:</strong> <%= @restaurant.fax %><br/>
+				<strong>Email:</strong> <%= @restaurant.email %><br/>
+				<strong>Website:</strong> <%= @restaurant.website %><br/>
+			</span>
+		</div>
+	</div>	
+</div>

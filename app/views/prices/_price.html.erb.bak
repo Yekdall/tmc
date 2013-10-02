@@ -1,0 +1,12 @@
+<li class="nobullets">
+	<span class="row-fluid">
+		<span class="span3">
+			<%= price.restaurant.name %>
+		</span>
+		<span class="span2">
+			<%= price.price %>
+		</span>
+		<span class="span3">
+			<%= link_to "seleccionar", '#', class: 'btn btn-mini btn-info' %>
+		</span>
+</li>

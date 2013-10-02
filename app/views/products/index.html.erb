@@ -1,0 +1,11 @@
+<% provide(:title, 'Productos') %>
+	
+<h1>Productos</h1>
+
+<%= will_paginate %>
+	<span class="span12 offset2">
+		<ul class="thumbnails">
+			<%= render @products %>
+		</ul>
+	</span>
+<%= will_paginate %>

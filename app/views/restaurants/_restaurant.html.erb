@@ -1,0 +1,13 @@
+<li>
+	<%= link_to restaurant.name, restaurant %> - <%= restaurant.city %><br/>
+	
+	<% if user_signed_in? %>
+		<% if current_user.superadmin? %>
+			<%= link_to "edit", edit_restaurant_path(restaurant), 
+									  class: 'btn btn-mini' %>
+			<%= link_to "delete", restaurant, method: :delete, 
+										confirm: "¿Estás seguro?",
+										class: 'btn btn-mini btn-danger' %>
+		<% end %>
+	<% end %>
+</li>

@@ -1,0 +1,18 @@
+<footer class="footer">
+	<small>
+		<a href="#">InmoGator Draft</a>
+		by Alfonso P
+		<br>
+		ip: <%= request.ip %>
+		<br>
+		webserver: <%= request.server_software %>
+	</small>
+	<nav>
+		<ul>
+			<li><%= link_to "Sobre el sistema", about_path %></li>
+			<li><%= link_to "Contactar", contact_path %></li>
+			<li><a href="#">Noticias</a></li>
+			
+		</ul>
+	</nav>
+</footer>

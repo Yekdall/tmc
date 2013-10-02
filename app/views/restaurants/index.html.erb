@@ -1,0 +1,13 @@
+<% provide(:title, 'Restaurantes') %>
+	
+<h1>Restaurantes</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<%= link_to "Add new", add_new_path, class: "btn btn-primary" %>
+	<%= render @restaurants %>
+		
+</ul>
+
+<%= will_paginate %>

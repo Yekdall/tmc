@@ -1,0 +1,40 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+
+<fieldset class="edit-details">
+	<legend class="edit-details">Restaurant details</legend>
+		
+		<%= f.label :restaurant_type %>
+		<%= f.select(:res_type, options_from_collection_for_select(RestaurantType.all, :id, :name)) %>
+		
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+		<%= f.label :region %>
+		<%= f.select(:region, options_from_collection_for_select(Region.all, :id, :name), :include_blank => true)  %>
+		
+		<%= f.label :city %>
+		<%= f.text_field :city %>
+				
+		<%= f.label :postcode %>
+		<%= f.text_field :postcode %>
+
+		<%= f.label :address %>
+		<%= f.text_field :address %>
+		
+		<%= f.hidden_field(:pais, value: "España") %>
+						
+		<%= f.label :phone %>
+		<%= f.text_field :phone %>
+						
+		<%= f.label :fax %>
+		<%= f.text_field :fax %>
+		
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+		
+		<%= f.label :website %>
+		<%= f.text_field :website %>
+</fieldset>
+
+<script>$(document).ready(function(){$('input[type=file]').bootstrapFileInput();});</script>

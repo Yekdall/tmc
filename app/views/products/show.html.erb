@@ -1,0 +1,98 @@
+<% provide(:title, @product.name) %>
+
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h1>
+				<%= @product.name %><br/>
+				<%= image_tag(@product.avatar.url(:medium)) %>
+			</h1>
+		</section>
+	</aside>
+	<div class="span8">
+		<h2 class="contacto">Tamaños disponibles</h2>
+		<div class="main">
+			
+			<ul class="nav nav-pills">
+				<li>
+    				<a id="size1" href="#"><i class="icon-user icon-white"></i> Pequeña</a>
+				</li>
+				<li class="active">
+    				<a id="size2" href="#"><i class="icon-heart icon-white"></i> Mediana</a>
+				</li>
+				<li>
+    				<a id="size3" href="#"><i class="icon-home icon-white"></i> Familiar</a>
+				</li>
+			</ul>
+			
+			<span class="row-fluid">
+				<span class="span2">Restaurante</span>
+				<span class="span2">Precio</span>
+				<span class="span2"></span>
+			</span>
+	
+			<section class="optional peq">
+				<%= render @prices_peq %>
+			</section>
+			<section class="optional med">
+				<%= render @prices_med %>
+			</section>
+			<section class="optional gra">
+				<%= render @prices_gra %>
+			</section>
+
+			
+		</div>
+	</div>	
+</div>
+
+<script type="text/javascript">
+
+$('ul.nav-pills li a').click(function (e) {
+  $('ul.nav-pills li.active').removeClass('active')
+  $(this).parent('li').addClass('active')
+})
+
+$('.med').css('display','block');
+
+$("#size1").click(function () {
+	$('.optional').css('display','none');
+	$('.peq').css('display','block');
+	});
+
+$("#size2").click(function () {
+	$('.optional').css('display','none');
+	$('.med').css('display','block');
+	});
+	
+$("#size3").click(function () {
+	$('.optional').css('display','none');
+	$('.gra').css('display','block');
+	});
+
+
+//Display/Hide content based on selection
+
+/*$("#dropdown").change(function () {
+	$('.optional').css('display','none');
+	$('.headlist').css('display','none');
+	
+	$("#dropdown :selected").each(function () {
+		
+		if($(this).val() == "1") {
+			$('.headlist').css('display','block');
+			$('.peq').css('display','block');
+		}
+		else if($(this).val() == "2") {
+			$('.headlist').css('display','block');
+			$('.med').css('display','block');
+		}
+		else if($(this).val() == "3") {
+			$('.headlist').css('display','block');
+			$('.gra').css('display','block');
+		}
+	});
+});
+*/
+	
+</script>

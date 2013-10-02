@@ -1,0 +1,79 @@
+<% provide(:title, "Búsqueda de dirección") %>
+
+<link rel="stylesheet" href="/css/themes/base/jquery.ui.all.css">
+<link rel="stylesheet" href="/css/demo.css">
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=es"></script>
+<script src="/javascripts/jquery.ui.addresspicker.js"></script>
+
+
+<script>
+	$(function() {
+		var addresspicker = $( "#addresspicker" ).addresspicker();
+		var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
+			regionBias: "es",
+      updateCallback: showCallback,
+		  elements: {
+		    map:      "#map",
+		    lat:      "#lat",
+		    lng:      "#lng",
+		    street_number: '#street_number',
+		    route: '#route',
+		    locality: '#locality',
+		    administrative_area_level_2: '#administrative_area_level_2',
+		    administrative_area_level_1: '#administrative_area_level_1',
+		    country:  '#country',
+		    postal_code: '#postal_code',
+        type:    '#type' 
+		  }
+		});
+
+		var gmarker = addresspickerMap.addresspicker( "marker");
+		gmarker.setVisible(true);
+		addresspickerMap.addresspicker( "updatePosition");
+
+    $('#reverseGeocode').change(function(){ 
+      $("#addresspicker_map").addresspicker("option", "reverseGeocode", ($(this).val() === 'true'));
+    });
+
+    function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+		
+	});
+</script>
+
+<div class="demo">
+  
+  <h3>Introduce tu dirección actual:</h3>
+  
+  <div class='clearfix'>
+  	<div class='input input-positioned'>
+	    <label>Dirección: </label><input id="addresspicker_map" /><br/>
+		<label>Localidad: </label><input id="locality" disabled=disabled><br/>
+		<label>Provincia: </label><input id="administrative_area_level_2" disabled=disabled><br/>
+		<label>Comunidad autónoma: </label><input id="administrative_area_level_1" disabled=disabled><br/>
+		<label>País:  </label><input id="country" disabled=disabled><br/>
+		<label>Código postal: </label><input id="postal_code" disabled=disabled><br/>
+		</label><input id="lat" type=hidden><br/>
+		</label><input id="lng" type=hidden><br/>
+      	<input id="type" type=hidden /><br/>
+    </div>
+
+    <div class='map-wrapper'>
+      <label id="geo_label" for="reverseGeocode">¿Usar la posición del mapa como dirección?</label>
+      <select id="reverseGeocode">
+        <option value="false" selected>No</option>
+        <option value="true">Sí</option>
+      </select><br/>
+
+      <div id="map"></div>
+      <div id="legend">Arrastra el puntero en el mapa para corregir la dirección</div>
+    </div>
+  </div>
+
+  <div class='input-positioned'  style="display: none;">
+    <label>Callback: </label>
+    <textarea id='callback_result' rows="15"></textarea>
+  </div>
+
+</div>

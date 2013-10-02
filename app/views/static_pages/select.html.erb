@@ -1,0 +1,15 @@
+<% provide(:title, "Selección de tipo de producto") %>
+
+<div class="row">
+	<div id="select-details" class="row-fluid">
+		<span class="span4">
+			<%= link_to image_tag("pizza.png", :size => "200x200", alt: "Pizzas"), products_path %>
+		</span>
+		<span class="span4">
+			<%= link_to image_tag("burguer.png", :size => "200x200", alt: "Hamburguesas", :title => "No disponible"), '#' %>
+		</span>
+		<span class="span4">
+			<%= link_to image_tag("kebab.png", :size => "200x200", alt: "Kebabs", :title => "No disponible"), '#' %>
+		</span>
+	</div>
+</div>	

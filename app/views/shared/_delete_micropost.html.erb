@@ -1,0 +1,6 @@
+<% if current_user?(object.user) %>
+	<%= link_to "delete", object, method: :delete,
+									 confirm: "¿Estás seguro?",
+									 class: 'btn btn-mini btn-danger',
+									 title: object.content %>
+<% end %>
