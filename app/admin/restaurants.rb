@@ -35,11 +35,17 @@ ActiveAdmin.register Restaurant do
       f.input :website
       f.input :avatar, :as => :file
     end
-    f.inputs "Menu items" do
-      f.has_many :prices do |p|
-        p.input :price, :label => "Price (EUR)"
-        p.input :size_id, :as => :select, :collection => Size.all
-        p.input :product_id, :as => :select, :collection => Product.all
+    #f.inputs "Menu items" do
+    #  f.has_many :prices do |p|
+    #    p.input :price, :label => "Price (EUR)"
+    #    p.input :size_id, :as => :select, :collection => Size.all
+    #    p.input :product_id, :as => :select, :collection => Product.all
+    #  end
+    f.inputs "Distribution points" do
+      f.has_many :distripos do |d|
+        d.input :distri_type, :label => "Distribution type", as: :select, collection: ([["Postcode", "cp"], ["Distance", "km"]])
+        d.input :postcode
+        d.input :kmrange, :label => "Distance (in KM)"
       end
     end
     f.buttons
@@ -75,11 +81,11 @@ ActiveAdmin.register Restaurant do
   end
   
   show do 
-    panel "Menu items" do
-      table_for restaurant.prices do
-        column :product
-        column :size
-        column :price
+    panel "Distribution points" do
+      table_for restaurant.distripos do
+        column :distri_type
+        column :postcode
+        column :kmrange
       end
     end
     panel "Location" do

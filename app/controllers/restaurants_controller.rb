@@ -1,8 +1,11 @@
 class RestaurantsController < ApplicationController
   
   def index
-    #@users = User.all
-    @restaurants = Restaurant.paginate(page: params[:page])
+    @search = Restaurant.search(params[:q])
+    @restaurants = @search.result(distinct: true).paginate(page: params[:page])
+    @restaurants.each do |restaurant|
+      @products = restaurant.products.paginate(page: params[:page]).uniq
+    end 
   end
   
   def show

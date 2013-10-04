@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925143405) do
+ActiveRecord::Schema.define(:version => 20131003075236) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(:version => 20130925143405) do
   create_table "countries", :force => true do |t|
     t.string "code", :limit => 2
     t.string "name", :limit => 64
+  end
+
+  create_table "distripos", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.string   "distri_type"
+    t.string   "postcode"
+    t.decimal  "kmrange"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "menus", :force => true do |t|

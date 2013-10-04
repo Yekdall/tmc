@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   
   def index
-    @products = Product.paginate(page: params[:page])
+    #@products = Product.paginate(page: params[:page])
+    @search = Product.search(params[:q])
+    @products = @search.result(distinct: true).paginate(page: params[:page])
     
   end
   
@@ -19,5 +21,6 @@ class ProductsController < ApplicationController
     @prices_gra = @product.prices.paginate(page: params[:page]).order(:price).where(:size_id => gra)
     
   end
+  
   
 end

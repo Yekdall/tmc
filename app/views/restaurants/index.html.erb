@@ -1,13 +1,23 @@
 <% provide(:title, 'Restaurantes') %>
 	
-<h1>Restaurantes</h1>
+<h1>Lo primero: ¿Dónde estás?</h1>
+
+<%= search_form_for @search do |f| %>
+    <%= f.label :distripos_postcode_cont, "Introduce tu código postal" %>
+    <%= f.text_field :distripos_postcode_cont %>
+    
+    <%= f.submit "Busca en tu zona", class: "btn btn-success" %>
+<% end %>
 
 <%= will_paginate %>
 
-<ul class="users">
-	<%= link_to "Add new", add_new_path, class: "btn btn-primary" %>
-	<%= render @restaurants %>
-		
-</ul>
+<% unless params[:q].blank? %>
+	<h1>Y ahora: ¿Qué quieres comer?</h1>
+	<span class="span12 offset2">
+		<ul class="thumbnails">
+		<%= render @products %>
+		</ul>
+	</span>
+<% end %>
 
 <%= will_paginate %>

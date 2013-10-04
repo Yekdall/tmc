@@ -18,11 +18,11 @@
 #  pool: 5
 #  timeout: 5000
 
-production:
-  adapter: sqlite3
-  database: db/tmc.sqlite3
-  pool: 5
-  timeout: 5000
+#production:
+#  adapter: sqlite3
+#  database: db/tmc.sqlite3
+#  pool: 5
+#  timeout: 5000
 
 development:
   adapter: postgresql
@@ -40,3 +40,10 @@ test:
   username: alfonpg
   password: Madrid01
   
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: dccnletum7k2t5
+  pool: 5
+  username: roeugnxquucpte
+  password: 8ZHYdnaPW8P_5pbLeIua7Q2Cf0

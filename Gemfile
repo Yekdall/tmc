@@ -19,7 +19,7 @@ gem 'activeadmin'
 #gem 'remotipart', '~> 1.2'
 #gem 'rails_autocomplete'
 gem 'geocoder'
-
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
